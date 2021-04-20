@@ -4,13 +4,13 @@ import utils.GeneralException;
 
 public class PilhaDinamica {
     
-    private No head;
-    private int size=0;
+    private Node head;
+    private int size = 0;
     
     @SuppressWarnings("unused")
 	public void push(Integer element) throws GeneralException{
         if (element > 0 || element!=null){
-            No no = new No(element);
+            Node no = new Node(element);
             
             no.setNext(head);
             head = no;
@@ -20,6 +20,7 @@ public class PilhaDinamica {
 		}
     }
 
+    // LIFO - Last In First Out
     public void pop() throws GeneralException{
         if (!isEmpty()){
             head = head.getNext();
@@ -47,7 +48,7 @@ public class PilhaDinamica {
     }
     
     public void print(){
-        No temp = head;
+        Node temp = head;
         int count = 1;
         while(temp!=null){
             System.out.println("Posição " + count + " - Valor: " + temp.getData());
