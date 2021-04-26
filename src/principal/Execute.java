@@ -3,34 +3,48 @@ package principal;
 import java.util.ArrayList;
 import java.util.List;
 
-import utils.FuncoesCalculoLista;
-import utils.FuncoesCalculoPilha;
+import utils.FuncoesCalculo;
 import utils.GeneralException;
 
 public class Execute {
 	
-	static Integer arrayInstancias[] = {1000, 2000, 3000, 4000, 5000, 6000};
+	static Integer arrayInstancias[] = {10000, 20000, 30000, 40000, 50000};
 	
 	
 	public static void main(String[] args) {
+		FuncoesCalculo fc = new FuncoesCalculo();
 		PilhaDinamica pilhaDinamica = new PilhaDinamica();
 		ListaEncadeadaDinamica listaEncadeadaDinamica = new ListaEncadeadaDinamica();
 		
-		List<Long> mediasLista = new ArrayList<Long>();
-		List<Long> mediasPilha = new ArrayList<Long>();
+		List<Long> mediasListaAdd = new ArrayList<Long>();
+		List<Long> mediasPilhaPush = new ArrayList<Long>();
+		
+		List<Long> mediasListaBuscar = new ArrayList<Long>();
+		List<Long> mediasPilhaPop = new ArrayList<Long>();
 		
 		try {
-			for (int i = 1; i < arrayInstancias.length; i++) {
-				mediasLista.add(FuncoesCalculoLista.escolherInstanciaLista(arrayInstancias[i], listaEncadeadaDinamica));
-				mediasPilha.add(FuncoesCalculoPilha.escolherInstanciaPilha(arrayInstancias[i], pilhaDinamica));
+			for (int i = 0; i < arrayInstancias.length; i++) {
+				mediasListaAdd.add(fc.calcularInstanciasAdd(arrayInstancias[i], listaEncadeadaDinamica));
+				mediasPilhaPush.add(fc.calcularInstanciasPush(arrayInstancias[i], pilhaDinamica));
+			
+				mediasListaBuscar.add(fc.calcularInstanciasBuscar(arrayInstancias[i], listaEncadeadaDinamica));
+				mediasPilhaPop.add(fc.calcularInstanciasPop(arrayInstancias[i], pilhaDinamica));
 			}
 		} catch (GeneralException e) {
 			e.printStackTrace();
 		}
 		
-		for (int i = 1; i < mediasLista.size(); i++) {
-			System.out.println("Média de instacias x = "+ arrayInstancias[i] +" da lista, resulta em: "+ mediasLista.get(i)+ " nanosegundos");
-			System.out.println("Média de instacias x = "+ arrayInstancias[i] +" da pilha, resulta em: "+ mediasPilha.get(i)+ " nanosegundos");
+		System.out.println("#### FUNÇÃO ADD/PUSH ###\n");
+		for (int i = 0; i < arrayInstancias.length; i++) {
+			System.out.println("Média de instacias x = "+ arrayInstancias[i] +" da lista, resulta em: "+ mediasListaAdd.get(i)+ " nanosegundos");
+			System.out.println("Média de instacias x = "+ arrayInstancias[i] +" da pilha, resulta em: "+ mediasPilhaPush.get(i)+ " nanosegundos");
+			System.out.println("--------------------------------------------");
+		}
+		
+		System.out.println("\n#### FUNÇÃO BUSCAR/POP ###\n");
+		for (int i = 0; i < arrayInstancias.length; i++) {
+			System.out.println("Média de instacias x = "+ arrayInstancias[i] +" da lista, resulta em: "+ mediasListaBuscar.get(i)+ " nanosegundos");
+			System.out.println("Média de instacias x = "+ arrayInstancias[i] +" da pilha, resulta em: "+ mediasPilhaPop.get(i)+ " nanosegundos");
 			System.out.println("--------------------------------------------");
 		}
 	}

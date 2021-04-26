@@ -4,8 +4,9 @@ import utils.GeneralException;
 
 public class ListaEncadeadaDinamica {
 	private Node first = null, last = null;   
+	int size = 0;
 	
-	public boolean Procura(Integer value){
+	public boolean buscar(Integer value){
       Node aux = getfirst();      
       while(aux != null){
          if(value.equals(aux.getData())){
@@ -28,8 +29,8 @@ public class ListaEncadeadaDinamica {
             newNode.setData(value);
             last = newNode;
         }
+		size++;
 	}
-	
 
 	public void setfirst(Node first) {
 		this.first = first;
