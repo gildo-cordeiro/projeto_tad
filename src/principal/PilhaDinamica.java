@@ -14,7 +14,7 @@ public class PilhaDinamica {
             
             no.setNext(head);
             head = no;
-            size++;
+            setSize(getSize() + 1);
         } else {
 			throw new GeneralException("ERRO: Elemento Invalido!");
 		}
@@ -22,40 +22,21 @@ public class PilhaDinamica {
 
     // LIFO - Last In First Out
     public void pop() throws GeneralException{
-        if (!isEmpty()){
+        if (head!=null){
             head = head.getNext();
-            size--;
+            setSize(getSize() - 1);
         }else{
            throw new GeneralException("ERRO: Pilha Vazia!");
         }
         
     }
 
-    public boolean isEmpty() {
-        if (head==null)
-            return true;
-        return false;
-    }
+	public int getSize() {
+		return size;
+	}
 
-    public int size() {
-        return size;
-    }
-
-    public Integer top() throws GeneralException{
-        if (isEmpty())
-            throw new GeneralException("ERRO: Pilha Vazia!");
-        return head.getData();
-    }
-    
-    public void print(){
-        Node temp = head;
-        int count = 1;
-        while(temp!=null){
-            System.out.println("Posição " + count + " - Valor: " + temp.getData());
-            temp=temp.getNext();
-            count++;
-        }
-
-    }
+	public void setSize(int size) {
+		this.size = size;
+	}
     
 }
