@@ -2,13 +2,13 @@ package utils;
 
 import java.util.Random;
 
-import principal.ListaEncadeadaDinamica;
-import principal.PilhaDinamica;
+import principal.ListaEncadeada;
+import principal.Pilha;
 public class FuncoesCalculo {
 	
 	private Random gerador;
 	
-	public long calcularInstanciasAdd(Integer instancia, ListaEncadeadaDinamica obj) throws GeneralException {
+	public long calcularInstanciasAdd(Integer instancia, ListaEncadeada obj) {
 		long media = 0;
 		gerador = new Random();
 		
@@ -28,7 +28,7 @@ public class FuncoesCalculo {
 		return media/instancia;
 	}
 	
-	public long calcularInstanciasBuscar(Integer instancia, ListaEncadeadaDinamica obj) throws GeneralException {
+	public long calcularInstanciasBuscar(Integer instancia, ListaEncadeada obj){
 		long media = 0;
 		
 		gerador = new Random();
@@ -48,8 +48,9 @@ public class FuncoesCalculo {
 		//System.out.println("Lista: "+media+"\n");
 		return media/instancia;
 	}
-	
-	public long calcularInstanciasPush(Integer instancia, PilhaDinamica obj) throws GeneralException {
+
+	 
+	public long calcularInstanciasPush(Integer instancia, Pilha obj){
 		long media = 0;
 		
 		gerador = new Random();
@@ -59,6 +60,7 @@ public class FuncoesCalculo {
 			Integer numero = gerador.nextInt(instancia);
 
 			long tempoInicial = System.nanoTime();
+			//pilha.push(i);
 			obj.push(numero);
 			long tempoFinal = System.nanoTime();
 			
@@ -69,12 +71,13 @@ public class FuncoesCalculo {
 		return media/instancia;
 	}
 	
-	public long calcularInstanciasPop(Integer instancia, PilhaDinamica obj) throws GeneralException {
+	public long calcularInstanciasPop(Integer instancia, Pilha obj){
 		long media = 0;
 		
 		for (int i = 1; i < instancia; i++) {
 
 			long tempoInicial = System.nanoTime();
+			//pilha.pop();
 			obj.pop();
 			long tempoFinal = System.nanoTime();
 			

@@ -8,6 +8,8 @@ public class Node {
 	    this.data = d;
 	    this.next = null;
 	}
+	
+	public Node() {}
 
 	public Integer getData() {
 	    return data;
